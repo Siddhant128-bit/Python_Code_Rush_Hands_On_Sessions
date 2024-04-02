@@ -1,4 +1,4 @@
-'''
+''''''
 2 types of comments in python 
     1. Inline/oneline comment -> Comments one line at a time, we start it using '#'
     2. Multiple linesc comment -> comment that can be used for multiple lines
