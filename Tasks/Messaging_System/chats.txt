@@ -1,0 +1,7 @@
+Sender: rabika19, Receiver: rachel12, Message: Hi Rachel! What time do you wanna meet tomorrow?
+Sender: rabika19, Receiver: rachel12, Message: Hi rach!
+Sender: rabika19, Receiver: joey13, Message: Hii! Happy Birthday!
+Sender: joey13, Receiver: rabika19, Message: Can you pick up my package.
+Sender: joey13, Receiver: rabika19, Message: Thanks! Hope to see you soon!
+Sender: rachel12, Receiver: rabika19, Message: How about 9am?
+Sender: rachel12, Receiver: rabika19, Message: How about 1 am?
