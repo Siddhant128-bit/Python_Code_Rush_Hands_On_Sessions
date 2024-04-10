@@ -61,6 +61,11 @@ class Messaging_System_Accounts:
         with open("chats.txt", "w") as f:
             f.write(chats_str)
 
+    def save_all_chats(self, all_chats):
+        with open("chats.txt", "w") as f:
+            values = list(all_chats.values())
+            f.write('\n'.join(values))
+
     def parse_messages(self, message):
         parts = message.split(", ")
         sender = parts[0].split(": ")[1]
@@ -85,7 +90,7 @@ class Messaging_System_Accounts:
                 chat for chat in chats if sender_receiver_pair in chat
             ][-15:]
 
-            # Save other chats 
+            # Save other chats
             chats = [chat for chat in chats if sender_receiver_pair not in chat]
 
             # Recent sender-receiver chats and other chats
@@ -96,28 +101,36 @@ class Messaging_System_Accounts:
         else:
             print("Recipient username not found.")
 
-    def delete_message(self, chats):
+    def delete_message(self, chat_dict, all_chat_dict, target_username):
         try:
-            index_to_delete = int(input("Enter the index of the message to delete: "))
-            if index_to_delete < len(chats):                        
-                chats.pop(index_to_delete-1)
-                print("Message deleted.")
-                self.save_chats(chats)
-                return
-            else:
-                print("Invalid message index.")
+            if target_username in chat_dict:
+                index_to_delete = (
+                    int(input("Enter the index of the message to delete: ")) - 1
+                )
+                if 0 <= index_to_delete < len(chat_dict[target_username]):
+                    parts = chat_dict[target_username][index_to_delete].split(", ")
+                    index = parts[3].split(": ")[1]
+                    del all_chat_dict[index]
+                    print("Message deleted.")
+                    return all_chat_dict
+                else:
+                    print("Invalid message index.")
         except ValueError:
             print("Invalid input! Please enter a valid index.")
-
+        return all_chat_dict
 
     def view_message_history(self):
         user_data = self.load_user_data()
         search_username = input("Enter username to view chat: ")
+        count = 0
         if self.search_user(search_username, user_data):
             chats = self.load_chats()
             if chats:
                 chat_dict = {}
+                all_chat_dict = {}
                 for chat in chats:
+                    count += 1
+                    all_chat_dict[str(count)] = chat
                     sender_name, receiver_name, message_content = self.parse_messages(chat)
                     # Determine whether the current user sent or received the message
                     if (sender_name == self.credential_username and receiver_name == search_username):
@@ -131,25 +144,28 @@ class Messaging_System_Accounts:
                     # Store message in the dictionary
                     if target_username not in chat_dict:
                         chat_dict[target_username] = []
-
-                    chat_dict[target_username].append(f"Sender: {sender_name}, Receiver: {receiver_name}, Message: {message_content}")
-
+                   
+                    chat_dict[target_username].append(f"Sender: {sender_name}, Receiver: {receiver_name}, Message: {message_content}, Index: {count}")
+                    
                 if chat_dict:
                     print("\nMessage History:")
                     for username, messages in chat_dict.items():
                         print(f"With User: {username}")
-                    for i, message in enumerate(messages, 1):
-                        sender, _, message_content = self.parse_messages(message)
-                        if sender == self.credential_username:
-                            print(f"{i}. You: {message_content}")
-                        else:
-                            print(f"{i}. {sender}: {message_content}")
+                        for i, message in enumerate(messages, 1):
+                            sender, _, message_content = self.parse_messages(message)
+                            if sender == self.credential_username:
+                                print(f"{i}. You: {message_content}")
+                            else:
+                                print(f"{i}. {sender}: {message_content}")
 
-                    choice = input("Press 1 to delete a message or press enter to continue: ")
+                    choice = input(
+                        "Press 1 to delete a message or press enter to continue: "
+                    )
                     if choice == "1":
-                        self.delete_message(chats)
-            else:
-                print("No chat history.")
+                        all_chat_dict = self.delete_message(chat_dict, all_chat_dict, search_username)
+                        self.save_all_chats(all_chat_dict)
+                else:
+                    print("No chat history.")
         else:
             print("User not found!")
 
@@ -173,7 +189,6 @@ class Messaging_System_Accounts:
 
     def sign_in(self):
         tprint("Sign in: ")
-
         input_username = input("Enter username: ")
         input_password = getpass.getpass("Enter password: ")
 
@@ -189,7 +204,6 @@ class Messaging_System_Accounts:
     def __init__(self):
         while True:
             tprint("Bubble Chat")
-
             choice = int(
                 input(
                     "Menu Options:\n1. Signup\n2. Sign in\n3. Quit\nEnter your choice: "
