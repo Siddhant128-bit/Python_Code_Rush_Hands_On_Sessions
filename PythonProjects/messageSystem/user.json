@@ -1,0 +1,21 @@
+{
+    "Nistha": {
+        "password": "asdf",
+        "message": {}
+    },
+    "Yunik": {
+        "password": "yu",
+        "message": {
+            "Nistha": [
+                {
+                    "sender": "Yunik",
+                    "chat": "hello nistha from yunik"
+                },
+                {
+                    "sender": "Nistha",
+                    "chat": "hello to you too from nistha to yunik"
+                }
+            ]
+        }
+    }
+}
