@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+    <title>View Notes</title>
+  </head>
+  <body>
+    <a href="{% url 'add_note' %}">Add a note</a>
+    <h1 id="mainTitle">View Notes</h1>
+    <div id="mainContainer">
+      {% if notes %}
+      <div class="note-container">
+        {% for note in notes %}
+        <div class="note">
+          <p class="note-content">{{ note.content }}</p>
+          <p class="note-date">{{ note.date }}</p>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p>No notes available.</p>
+      {% endif %}
+    </div>
+  </body>
+</html>

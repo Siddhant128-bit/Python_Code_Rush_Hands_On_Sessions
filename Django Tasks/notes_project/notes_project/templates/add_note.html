@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Note</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+  </head>
+  <body>
+    <a href="{% url 'view_notes' %}">View all notes</a>
+    <h1 id="mainTitle">Add a New Note</h1>
+    <div id="mainContainer">
+      <form method="post">
+        {% csrf_token %}
+        <label for="note_content">Note Content:</label><br />
+        <textarea
+          id="note_content"
+          name="note_content"
+          rows="4"
+          cols="40"
+        ></textarea>
+        <input id="submitBtn" type="submit" value="Add Note" />
+      </form>
+    </div>
+  </body>
+</html>
