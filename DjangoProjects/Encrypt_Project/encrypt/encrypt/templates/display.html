@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'display.css' %}"/>
+    <title>Display Encrypted</title>
+</head>
+<body>
+    {% csrf_token %}
+    <div class="container">
+    <h1>Secret Keeper</h1>
+    <div class="all">
+        <div class="label">Output Text:</div> <br>
+        <p>{{encrypted_text}}</p>
+    
+    <a href="">Back</a>
+</div>
+</div>
+
+</body>
+</html>
