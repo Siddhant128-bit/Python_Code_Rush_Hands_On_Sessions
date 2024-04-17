@@ -6,6 +6,7 @@
     <link href="{% static 'style.css' %}" rel="stylesheet">
 </head>
 <body>
+    {% csrf_token %}
     <div class="container" id="results-container">
         <div class="card">
             <h1>Secrete Keeper</h1>
