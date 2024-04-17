@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>View Notes</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff5ef;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Container for note boxes */
+        #note-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        /* Style for the note boxes */
+        .note-box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            width: calc(25% - 20px);
+            height: 200px; /* Set the height to a larger value */
+            box-sizing: border-box;
+            background-color: #fff9f9;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            overflow: auto; /* Add overflow property to enable scrolling if text overflows */
+            word-wrap: break-word; /* Allow long words to break and wrap */
+        }
+
+        /* Hover effect */
+        .note-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style for the note text */
+        .note-text {
+            margin: 0;
+        }
+
+        /* Media query for responsiveness */
+        @media only screen and (max-width: 768px) {
+            .note-box {
+                width: calc(50% - 20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>View Notes</h1>
+    {% csrf_token %}
+ 
+    {% if added_note %}
+        <div id="note-container">
+            {% for note in added_note %}
+                <div class="note-box">
+                    <pre class="note-text">{{ note }}</pre>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No notes added yet.</p>
+    {% endif %}
+</body>
+</html>
