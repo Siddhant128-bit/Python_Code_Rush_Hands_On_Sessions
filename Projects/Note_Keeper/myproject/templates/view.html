@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Keeper</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'homepage.css' %}">
+</head>
+<body>
+    {% csrf_token %}
+    <div class='container'>
+    <h1>Note Keeper</h1>   
+    <div class="note-container">
+        {% for note in notes %}
+            <div class="note-square">
+                <p>{{ note.message }}</p>
+                <p class='time'>Date: {{ note.timestamp }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <a href="{%url 'notes' %}"><button type="button">Back</button></a>
+</div>
+</body>
+</html>

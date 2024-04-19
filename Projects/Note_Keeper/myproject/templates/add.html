@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Keeper</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'homepage.css' %}">
+</head>
+<body>
+    <div class='container'>
+    <h1>Note Keeper</h1>
+    <form  method="post" >
+        {% csrf_token %}
+        <textarea name="note_message" rows="10" cols="50" placeholder="Enter your note message here..." required></textarea>
+        <br>
+        <a href="{%url 'notes' %}"><input type="submit" value="submit"/></a>
+    </div>
+    </form>
+</body>
+</html>
