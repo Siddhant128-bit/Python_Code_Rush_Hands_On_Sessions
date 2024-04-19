@@ -1,0 +1,56 @@
+/* home.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff5ef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.main {
+    width: 400px; /* Adjust the width and height to make it square */
+    height: 400px;
+    padding: 40px;
+    background-color: #fff9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 50px; /* Increased gap between buttons */
+    text-align: center;
+}
+
+.btn-primary {
+    display: center;
+    width: auto; /* Make the buttons full width of the container */
+    padding: 15px; /* Increase button size */
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: larger;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}

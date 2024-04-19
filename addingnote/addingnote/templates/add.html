@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Note</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static "add.css" %}">
+</head>
+<body>
+    <div class="main">
+        <h1>Notes</h1>
+        <form id="noteForm" method="post" action="{% url 'add' %}">
+            {% csrf_token %}
+            <label for="noteInput">Add your note here:</label>
+            <input type="text" id="noteInput" name="noteInput" placeholder="Type here...">
+            <button type="submit" id="addNoteBtn">Add Note</button>
+        </form>
+    </div>
+
+</body>
+</html>
