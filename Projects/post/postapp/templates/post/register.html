@@ -1,0 +1,40 @@
+{%extends "base.html" %}
+{% block start  %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'register.css' %}">
+
+<div class="container">
+<form method="post">
+{% csrf_token %}
+<h2>User Registration</h2>
+
+{% if messages %}
+{{message.tags}}
+<div>
+    {% for message in messages  %}
+    {{message}}
+    {% endfor %}
+</div>
+{% endif %}
+<label for="id_post_firstname">First Name</label>
+<input type="text" name="first_name" id="id_post_firstname">
+
+<label for="id_post_lastname">Last Name</label>
+<input type="text" name="last_name" id="id_post_lastname">
+
+<label for="id_post_username">Username</label>
+<input type="text" name="username" id="id_post_username">
+
+<label for="id_post_password">Set Password</label>
+<input type="password" name="password" id="id_post_password">
+
+<label for="id_post_email">Email</label>
+<input type="Email" name="email" id="id_post_email">
+
+<button type="submit">Register </button>
+<p> Already have an account<a href="/login/">&nbsp; Login</a> 
+
+</form>
+</div>
+
+{% endblock  %}

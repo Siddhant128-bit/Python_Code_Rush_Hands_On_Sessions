@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block start %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'register.css' %}">
+<div class="container">
+<h1>Update Post Here</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+  
+        <label for="id_post_name">Post name:</label>
+        <input type="text" value="{{posts.post_name}}" name="post_name" id="id_post_name">
+        
+        <label for="id_post_description">Post description:</label>
+        <textarea name="post_description" id="id_post_description" >{{posts.post_description}}</textarea>
+        
+        <label for="id_post_image">Post image:</label>
+        <input type="file" name="post_image" id="id_post_image">
+        
+    
+    <button type="submit">Update</button> 
+</form>
+
+{% endblock %}
