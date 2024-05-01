@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List</title>
+</head>
+<body>
+    <h1>ToDo List</h1>
+    <ul>
+        {% for task in tasks %}
+            <li>{{ task.title }} <a href="{% url 'delete_task' task.id %}">[Delete]</a></li>
+        {% endfor %}
+    </ul>
+    <form method="post" action="{% url 'add_task' %}">
+        {% csrf_token %}
+        <input type="text" name="title" placeholder="Enter task title" required>
+        <button type="submit">Add Task</button>
+    </form>
+</body>
+</html>
