@@ -6,7 +6,7 @@ class Event(models.Model):
     message_content = models.TextField()
 
     def __str__(self):
-        return f"{self.recipient_email} - {self.scheduled_datetime}"
+        return f"{self.recipient_email} - {self.scheduled_datetime}" 
 
 
 
