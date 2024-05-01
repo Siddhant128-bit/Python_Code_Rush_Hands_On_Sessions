@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Remember Event App</title>
+</head>
+<body>
+    <h1>Remember Event App</h1>
+    <form action="{% url 'create' %}" method="POST">
+        {% csrf_token %}
+        <label for="recipient_email">Recipient's Email Address:</label>
+        <input type="email" id="recipient_email" name="recipient_email" required><br><br>
+        
+        <label for="send_datetime">Date and Time to Send the Email:</label>
+        <input type="datetime-local" id="send_datetime" name="send_datetime" required><br><br>
+        
+        <label for="message_content">Message Content:</label><br>
+        <textarea id="message_content" name="message_content" rows="4" cols="50" required></textarea><br><br>
+        
+        <button type="submit">Remember Event</button>
+    </form>
+</body>
+</html>

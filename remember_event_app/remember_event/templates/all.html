@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Events</title>
+</head>
+<body>
+    <h1>All Events</h1>
+    {% csrf_token %}
+    <ul>
+        {% for event in events %}
+        <li>{{ event.recipient_email }}</li>
+        <li>{{ event.send_datetime }}</li>
+        <li>{{ event.message_content }}</li>
+        <br>
+        <br>
+        {% endfor %}
+    </ul>
+</body>
+</html>
