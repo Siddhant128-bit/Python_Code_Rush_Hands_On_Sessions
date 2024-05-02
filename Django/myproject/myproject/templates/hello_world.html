@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <label for="a">Number 1:</label>
+        <input type="number" id="a" name="a" required><br><br>
+        <label for="b">Number 2:</label>
+        <input type="number" id="b" name="b" required><br><br>
+        <label for="code_word">Operation:</label>
+        <select id="code_word" name="code_word" required>
+            <option value="sum">Addition</option>
+            <option value="diff">Subtraction</option>
+            <option value="mul">Multiplication</option>
+            <option value="div"> Division</option>
+        </select><br><br>
+        <input type="submit" value="Calculate">
+    </form>
+</body>
+</html>
