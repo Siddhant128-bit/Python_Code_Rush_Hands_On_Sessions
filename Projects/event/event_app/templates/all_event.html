@@ -1,0 +1,25 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class='container'>
+        <h1>Remember Event App</h1>
+
+        {% for event in events%}
+        <div class='note-square'>
+        <p class='outer'>Recipient's email:<p class='inner'>{{event.email}}</p></p>
+        <p class='outer'>Scheduled date:<p class='inner'>{{event.scheduled_datetime}}</p></p>
+        <p class='outer'>Event title:<p class='inner'>{{event.title}}</p></p>
+        <p class='outer'>Message Content:<p class='inner'>{{event.message}}</p></p>       
+        </div>
+         {%endfor%}
+    <a href="{%url 'home_page' %}"><button >Go Back </button></a>
+</div>
+    
+</body>
+</html>
