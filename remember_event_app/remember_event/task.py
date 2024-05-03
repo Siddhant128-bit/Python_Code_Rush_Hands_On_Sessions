@@ -1,6 +1,6 @@
 '''
 celery task
-event linxa
-task lai schedule garxa
+take an event
+schedule a task
 
 '''

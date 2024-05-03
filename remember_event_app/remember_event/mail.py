@@ -4,10 +4,14 @@ import smtplib
 import schedule
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+import json
 
 def send_email(recipient_email, message_content, send_datetime):
-    email_user = 'pdawadi20@gmail.com'
-    email_password = 'uelk sjrn serw ghqd'
+
+    with open('remember_event\credentials.json', 'r') as file:
+        credentials = json.load(file)
+        email_user = credentials['email_user']
+        email_password = credentials['email_password']
     subject = 'Reminder Mail'
 
     msg = MIMEMultipart()
