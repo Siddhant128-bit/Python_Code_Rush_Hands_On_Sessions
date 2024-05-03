@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Secrete Keeper</title>
+    <link href="{% static 'style.css' %}" rel="stylesheet">
+</head>
+<body>
+    {% csrf_token %}
+    <div class="container" id="results-container">
+        <div class="card">
+            <h1>Secrete Keeper</h1>
+            <label> Output text:</label>
+            <p>{{ result }}</p>
+            <a href="{% url 'secrete' %}" class="back-button"><button>Back</button></a>  <!-- Update the URL name to 'secrete' -->
+        </div>
+    </div>
+</body>
+</html>
