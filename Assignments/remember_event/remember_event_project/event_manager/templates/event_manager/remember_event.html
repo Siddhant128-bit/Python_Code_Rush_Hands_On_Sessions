@@ -5,9 +5,28 @@
   </head>
   <body>
     <h2>Remember Event</h2>
-    <form method="post">
-      {% csrf_token %} {{ form.as_p }}
-      <button type="submit">Remember</button>
-    </form>
+    <div class="container">
+      <h1>Remember Event App</h1>
+      <form action="{% url 'remember_event' %}" method="post">
+        {% csrf_token %}
+        <label for="Receiver">Receiver:</label>
+        <input type="email" name="email" placeholder="Email address" required />
+        <br />
+        <label for="date">Set the date to send:</label>
+        <input type="datetime-local" name="scheduled_datetime" required />
+        <br />
+        <label for="Subject">Subject:</label>
+        <input type="text" name="title" placeholder="title of email" required />
+        <br />
+        <label for="message">Message:</label>
+        <textarea
+          name="message"
+          placeholder="message to be delivered"
+          required
+        ></textarea>
+        <br />
+        <button type="submit">send</button>
+      </form>
+    </div>
   </body>
 </html>

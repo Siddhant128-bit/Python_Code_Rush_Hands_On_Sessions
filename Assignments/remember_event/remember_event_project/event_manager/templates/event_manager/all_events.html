@@ -5,10 +5,15 @@
   </head>
   <body>
     <h2>All Events</h2>
-    <ul>
+    
       {% for event in events %}
-      <li>{{ event }}</li>
+      <div>
+        <p>Recipient's email: <p>{{event.email}}</p></p>
+        <p>Scheduled date: <p> {{event.scheduled_datetime}}</p></p>
+        <p>Event title:<p class='inner'>{{event.title}}</p></p>
+        <p>Message Content:<p class='inner'>{{event.message}}</p></p>
+      </div>
       {% endfor %}
-    </ul>
+      <a href="{%url 'home_page' %}"><button >Go Back </button></a>
   </body>
 </html>
