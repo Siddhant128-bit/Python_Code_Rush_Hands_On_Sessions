@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Homepage</title>
+  </head>
+  <body>
+    {% csrf_token %}
+    <div>
+      <h1>Remember Event App</h1>
+      <a href="{%url 'remember_event' %}"><button>Send the mail</button></a>
+      <a href="{%url 'all_event' %}"><button>View emails</button></a>
+    </div>
+  </body>
+</html>
