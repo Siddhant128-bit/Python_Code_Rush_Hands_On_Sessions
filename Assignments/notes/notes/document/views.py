@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Note
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.contrib import messages
@@ -73,7 +73,7 @@ def login_page(request):
         except Exception as e:
             messages.error(request,"Something went wrong")
             return redirect('/register/')
-        return render(request,"login.html")
+    return render(request,"login.html")
 
 #register page for user
 def register_page(request):
