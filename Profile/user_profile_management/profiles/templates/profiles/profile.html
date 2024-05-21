@@ -1,0 +1,25 @@
+<!-- profiles/templates/profiles/profile.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h1>User Profile</h1>
+    <img src="{{ user.profile.profile_picture.url }}" alt="Profile Picture">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ profile_form.as_p }}
+        <button type="submit">Save Profile</button>
+    </form>
+    <h2>Posts</h2>
+    <ul>
+        {% for post in posts %}
+            <li>{{ post.content }}</li>
+        {% endfor %}
+    </ul>
+    {% include 'profiles/create_post.html' %}
+</body>
+</html>
