@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Events</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="all-events-container">
+        <h1>All Events</h1>
+        <ul>
+            {% for event in events %}
+                <li>{{ event.recipient_email }} - {{ event.date }} - {{ event.time }} - {{ event.message_content }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
