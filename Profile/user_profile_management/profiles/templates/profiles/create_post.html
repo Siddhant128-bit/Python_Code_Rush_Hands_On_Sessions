@@ -1,0 +1,17 @@
+<!-- profiles/templates/profiles/create_post.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Post</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h2>Create Post</h2>
+    <form method="post" action="{% url 'create_post' %}">
+        {% csrf_token %}
+        {{ post_form.as_p }}
+        <button type="submit">Post</button>
+    </form>
+</body>
+</html>
