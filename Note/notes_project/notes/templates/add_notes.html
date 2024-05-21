@@ -1,0 +1,17 @@
+<!-- templates/add_notes.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Notes</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h1>Add Notes</h1>
+    <form method="post">
+        {% csrf_token %}
+        <textarea name="note_text"></textarea><br>
+        <input type="submit" value="Save">
+    </form>
+</body>
+</html>
